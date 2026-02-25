@@ -1,5 +1,5 @@
 // 茶言觀色·客戶流失風險評估器 - 主邏輯
-// 數據來源：從 Colab 分析得出的結果：流失率 25.8%，關鍵因素為 days_since_last_visit（重要性 65.6%）
+// 數據來源：從 Colab 分析得出的結果：整體流失率 21%，關鍵因素為「距上次到店天數」（重要性 32.8%）
 
 document.addEventListener('DOMContentLoaded', function() {
     // 獲取 DOM 元素
@@ -48,10 +48,10 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // 權重分配 (根據 Colab 分析結果)
         const weights = {
-            daysSinceLastVisit: 0.656,  // 65.6%
-            visitFrequency: 0.15,
-            totalSpending: 0.12,
-            age: 0.074
+            daysSinceLastVisit: 0.328,  // 32.8%
+            visitFrequency: 0.293,
+            totalSpending: 0.234,
+            age: 0.145
         };
         
         // 計算加權總分
