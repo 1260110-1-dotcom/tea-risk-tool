@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+
+<html lang="zh-Hant"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>茶言觀色·客戶流失風險評估器</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2b9dee",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101a22",
+                    },
+                    fontFamily: {
+                        "display": ["Work Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Work Sans', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
+<!-- Header Section -->
+<header class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-primary/10">
+<div class="flex items-center p-4 justify-between max-w-md mx-auto w-full">
+<div class="text-primary flex size-10 shrink-0 items-center justify-center bg-primary/10 rounded-lg">
+<span class="material-symbols-outlined">monitoring</span>
+</div>
+<h1 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-tight flex-1 ml-3">茶言觀色·流失風險評估</h1>
+<button class="text-slate-500 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</header>
+<main class="flex-1 max-w-md mx-auto w-full pb-24">
+<!-- Hero Card -->
+<div class="p-4">
+<div class="relative overflow-hidden rounded-xl bg-primary/5 border border-primary/10 p-5">
+<div class="flex flex-col gap-2 relative z-10">
+<h2 class="text-xl font-bold text-slate-900 dark:text-slate-100">客戶數據錄入</h2>
+<p class="text-slate-600 dark:text-slate-400 text-sm">請輸入該客戶的交易紀錄與行為指標，系統將自動計算流失機率。</p>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-10">
+<span class="material-symbols-outlined text-8xl">local_cafe</span>
+</div>
+</div>
+</div>
+<!-- Input Form Section -->
+<div class="px-4 space-y-4">
+<div class="bg-white dark:bg-slate-800/50 p-5 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 space-y-5">
+<!-- Age Input -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm">person</span>
+                        客戶年齡 (Age)
+                    </label>
+<input class="form-input w-full rounded-lg border-slate-200 dark:border-slate-700 bg-background-light dark:bg-background-dark focus:border-primary focus:ring-1 focus:ring-primary text-slate-900 dark:text-white" placeholder="例：28" type="number"/>
+</div>
+<!-- Total Spending -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm">payments</span>
+                        累計消費總額 (Total Spending)
+                    </label>
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">$</span>
+<input class="form-input w-full pl-8 rounded-lg border-slate-200 dark:border-slate-700 bg-background-light dark:bg-background-dark focus:border-primary focus:ring-1 focus:ring-primary text-slate-900 dark:text-white" placeholder="0.00" type="number"/>
+</div>
+</div>
+<!-- Visit Frequency -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm">calendar_month</span>
+                        到店頻率 (Visit Frequency)
+                    </label>
+<select class="form-select w-full rounded-lg border-slate-200 dark:border-slate-700 bg-background-light dark:bg-background-dark focus:border-primary focus:ring-1 focus:ring-primary text-slate-900 dark:text-white">
+<option>每週多次</option>
+<option>每週一次</option>
+<option>每月多次</option>
+<option>每月一次</option>
+<option>罕見 (數月一次)</option>
+</select>
+</div>
+<!-- Days Since Last Visit -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm">history</span>
+                        距上次消費天數 (Days Since Last Visit)
+                    </label>
+<input class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-primary" max="180" min="0" type="range" value="14"/>
+<div class="flex justify-between text-xs text-slate-500">
+<span>0 天</span>
+<span class="font-bold text-primary">14 天</span>
+<span>180 天</span>
+</div>
+</div>
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-3 rounded-lg transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">calculate</span>
+                    開始評估風險
+                </button>
+</div>
+</div>
+<!-- Results Preview Section -->
+<div class="p-4 mt-4 space-y-4">
+<h3 class="text-lg font-bold px-1 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">analytics</span>
+                評估結果預覽
+            </h3>
+<!-- Risk Level Card -->
+<div class="bg-white dark:bg-slate-800/50 p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm overflow-hidden relative">
+<div class="flex items-center justify-between mb-4">
+<div>
+<p class="text-sm text-slate-500 dark:text-slate-400">流失風險等級</p>
+<h4 class="text-3xl font-black text-green-500">LOW 低風險</h4>
+</div>
+<div class="flex flex-col items-center">
+<div class="relative size-16 flex items-center justify-center">
+<svg class="size-full -rotate-90" viewbox="0 0 36 36">
+<path class="stroke-slate-200 dark:stroke-slate-700 fill-none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" stroke-width="3"></path>
+<path class="stroke-green-500 fill-none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" stroke-dasharray="21, 100" stroke-linecap="round" stroke-width="3"></path>
+</svg>
+<span class="absolute text-sm font-bold">21%</span>
+</div>
+</div>
+</div>
+<div class="space-y-4 pt-4 border-t border-slate-100 dark:border-slate-700">
+<div class="flex flex-col gap-1">
+<div class="flex justify-between text-xs mb-1">
+<span class="font-medium">關鍵影響因子: 距上次消費天數</span>
+<span class="text-primary font-bold">65.6% 重要性</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-700 h-1.5 rounded-full">
+<div class="bg-primary h-1.5 rounded-full" style="width: 65.6%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Recommendations -->
+<div class="bg-primary/5 dark:bg-primary/10 p-5 rounded-xl border border-primary/20">
+<div class="flex items-center gap-2 mb-3 text-primary">
+<span class="material-symbols-outlined">lightbulb</span>
+<h4 class="font-bold">營運建議方案</h4>
+</div>
+<ul class="text-sm space-y-3 text-slate-700 dark:text-slate-300">
+<li class="flex gap-2">
+<span class="text-primary">•</span>
+<span>該客戶目前忠誠度穩定，建議發送<strong>季度回饋券</strong>維持粘性。</span>
+</li>
+<li class="flex gap-2">
+<span class="text-primary">•</span>
+<span>由於最後消費日已達14天，可推播<strong>新品試喝通知</strong>引導回流。</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- Footer / Guidance -->
+<footer class="mt-8 px-6 py-8 text-center bg-slate-100 dark:bg-slate-900/50 rounded-t-3xl">
+<p class="text-xs text-slate-400 leading-relaxed">
+                本評估工具由風險控制部提供演算法支持<br/>
+                數據僅供內部管理參考，請依據門市實際情況執行調整<br/>
+<a class="text-primary mt-2 inline-block font-medium" href="#">查看大數據評估指南</a>
+</p>
+</footer>
+</main>
+<!-- Navigation Bar -->
+<nav class="fixed bottom-0 left-0 right-0 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 z-50">
+<div class="max-w-md mx-auto flex justify-around items-center py-2 px-4">
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">shield_with_heart</span>
+<span class="text-[10px] font-medium">風險評估</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="text-[10px] font-medium">歷史記錄</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-medium">設置</span>
+</a>
+</div>
+</nav>
+</body></html>
